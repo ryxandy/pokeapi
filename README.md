@@ -20,6 +20,9 @@
 #### Maven
 #### Heroku
 
+
+## Basic EndPoint: https://pokeapi-br.herokuapp.com/swagger-ui.html#/
+
 ## Possible EndPoints:
 ![EndPoints](https://github.com/ryxandy/pokeapi/blob/main/endpoints.PNG)
 
