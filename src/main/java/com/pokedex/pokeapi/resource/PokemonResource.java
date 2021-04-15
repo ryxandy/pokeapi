@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -35,7 +36,7 @@ public class PokemonResource {
 		return repository.findAll();
 	}
 	
-	@RequestMapping(value = "/pokemons", method = RequestMethod.POST)
+	@PostMapping(value = "/pokemons")
 	public ResponseEntity<Pokemon> addPokemon(@Valid @RequestBody Pokemon pokemon) {
 		savePokemon = repository.save(pokemon);
 		System.out.println("A new Pokemon was created");
@@ -49,13 +50,13 @@ public class PokemonResource {
 	}
 	
 	
-	@RequestMapping(value = "/pokemon/fraqueza/{fraqueza}", method = RequestMethod.GET)
+	@GetMapping(value = "/pokemon/fraqueza/{fraqueza}")
 	public Pokemon findByFraqueza (@PathVariable String fraqueza) {
 		System.out.println("Found a pokemon! ");
 		return repository.findByFraqueza(fraqueza);
 	}
 	
-	@RequestMapping(value = "/pokemon/nome/{nome}", method = RequestMethod.GET)
+	@GetMapping(value = "/pokemon/nome/{nome}")
 	public Pokemon findByNome (@PathVariable String nome) {
 		return repository.findByNome(nome);
 	}
