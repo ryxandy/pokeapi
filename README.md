@@ -1,4 +1,4 @@
-# Welcome to my Pokédex
+# Welcome to my PokeAPI
 ![Welcome](https://github.com/ryxandy/pokeapi/blob/main/poke.jpg)
 #                                                                        Tour into this application 
 ###                                                             Objetivo, Tecnologias, Documentações, exemplos de uso.
