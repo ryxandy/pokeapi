@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pokedex.pokeapi.entity.Pokemon;
@@ -25,42 +23,38 @@ public class PokemonResource {
 
 	@Autowired
 	private PokemonRepository repository;
-	
-	@SuppressWarnings("unused")
-	private Pokemon savePokemon;
-	
-	
-	//Get All Pokemons
+
+
 	@GetMapping(path = "/pokemons")
 	public List<Pokemon> getAll(){
 		return repository.findAll();
 	}
-	
+
 	@PostMapping(value = "/pokemons")
 	public ResponseEntity<Pokemon> addPokemon(@Valid @RequestBody Pokemon pokemon) {
-		savePokemon = repository.save(pokemon);
+		repository.save(pokemon);
 		System.out.println("A new Pokemon was created");
-		return new ResponseEntity<Pokemon>(HttpStatus.CREATED);
+		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
-	
+
 	@GetMapping(path = "/pokemon/{id}")
 	public Optional<Pokemon> getOneByID (@PathVariable int id) {
 		System.out.println("Found a pokemon! ");
 		return repository.findById(id);
 	}
-	
-	
+
+
 	@GetMapping(value = "/pokemon/fraqueza/{fraqueza}")
 	public Pokemon findByFraqueza (@PathVariable String fraqueza) {
 		System.out.println("Found a pokemon! ");
 		return repository.findByFraqueza(fraqueza);
 	}
-	
+
 	@GetMapping(value = "/pokemon/nome/{nome}")
 	public Pokemon findByNome (@PathVariable String nome) {
 		return repository.findByNome(nome);
 	}
-	
+
 	@DeleteMapping(path = "/pokemon/{id}")
 	public void DeletePokemon(@PathVariable int id) {
 		System.out.println("Deleted a pokemon :( ");
